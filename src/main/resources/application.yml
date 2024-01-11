@@ -1,0 +1,14 @@
+logging:
+    level:
+        org.springframework.cloud.gateway: DEBUG
+        reactor.netty.http.client: DEBUG
+        
+spring:
+    cloud:
+        gateway:
+            routes:
+            -   id: customer_service
+                uri: http://10.20.19.97:8080
+                predicates:
+                - Path=/customer/**
+                filters: AuthenticationFiltering
